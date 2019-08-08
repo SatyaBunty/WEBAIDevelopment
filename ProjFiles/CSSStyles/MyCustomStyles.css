@@ -1,0 +1,65 @@
+body {
+    display: block;
+    margin: 0px;
+}
+.pgmain
+{
+    height : 600px;
+    width : 100%;
+    padding: 0;
+}
+.pgheader
+{
+    height : 15%;
+    width : 100%;
+    background-color: #006400;
+    padding: 0;
+    margin: 0;
+    float: left;
+    /*display: inline;*/
+}
+.pgbody
+{
+    height : 76%;
+    width : 100%;
+    background-color: #006400;
+    padding: 0;
+    margin: 0;
+    /*display: inline;
+    float: right;*/
+}
+.pgbodyleft
+{
+    height : 100%;
+    width : 20%;
+    background-color: #006400;
+    padding: 0;
+    margin: 0;
+    float: left;
+    /*white-space: nowrap;*/
+}
+.pgbodyright
+{
+    height : 100%;
+    width : 80%;
+    background-color:  #00e600;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+.pgfooter
+{
+    height : 9%;
+    width : 100%;
+    background-color: #006400;
+    padding: 0;
+    margin: 0;
+    float: left;
+    /*display: inline;
+    float: left;*/
+}
+.frames
+{
+    border-width: 0px;
+   /*border-color: currentColor;*/
+}
