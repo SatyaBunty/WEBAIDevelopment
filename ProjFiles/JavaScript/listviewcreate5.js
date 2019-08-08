@@ -148,7 +148,7 @@ function AccessDynamicURLData()
   var imageType = document.forms["singleURLForm"]["imageTypes"].value;
   var x1 = document.forms["singleURLForm"][urlStartPartName].value;
   urls=x1;
-  urls="https://www.pexels.com/search/beauty/";
+  //urls="https://www.pexels.com/search/beauty/";
   var x6 = nullValueCheck(document.forms["singleURLForm"][urlEndPartName].value);
   var data="";
   var changablePartString="";
