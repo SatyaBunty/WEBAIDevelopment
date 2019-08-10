@@ -144,85 +144,74 @@ function AccessSingleURLData()
 
 function AccessDynamicURLData()
 {
+    /*
   var urls="";
   var imageType = document.forms["singleURLForm"]["imageTypes"].value;
   var x1 = document.forms["singleURLForm"][urlStartPartName].value;
+  x1 = "https://www.pexels.com/search/beauty/";
   urls=x1;
+  var proxyUrl = "https://cors-anywhere.herokuapp.com/"+ x1;
+  //"http://anyorigin.com/get?url=" + x1 + "&callback=?";
+  //"https://cors-anywhere.herokuapp.com/"+ x1;
+  //"http://anyorigin.com/get?url=google.com&callback="
+  urls=proxyUrl;
   //urls="https://www.pexels.com/search/beauty/";
   var x6 = nullValueCheck(document.forms["singleURLForm"][urlEndPartName].value);
   var data="";
   var changablePartString="";
 
   var xobj = new XMLHttpRequest();
-  // xobj.overrideMimeType("application/json");
-  
-  xobj.open('GET', urls, true);
-  xobj.setRequestHeader('Access-Control-Allow-Headers', '*');//Content-Type
-  xobj.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-//   xobj.setRequestHeader('Access-Control-Allow-Origin', '*');//http://192.168.64.2/GetImages/
-  xobj.setRequestHeader('Access-Control-Allow-Origin', 'http://192.168.64.2/GetImages/');//http://192.168.64.2/GetImages/
-  xobj.setRequestHeader('Access-Control-Allow-Methods', '*');//GET, POST, PUT
-  xobj.setRequestHeader('Content-Type', '*' );
-  xobj.withCredentials = true;
-  
+  var obj = { "webURL":urls };
+  dbParam = JSON.stringify(obj);
+  var xobj = new XMLHttpRequest();
+    // xobj.overrideMimeType("application/json");
+    xobj.onreadystatechange = function () 
+    {
+      if (xobj.readyState == 4 && xobj.status == 200)
+      {
+        //onclick="window.open('anotherpage.html', '_blank');"
+        // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+        //callback(xobj.responseText);
+        var responseData = xobj.response;
+        // var options = JSON.parse(responseData);
+        // var optionsHTML="";
+        // for(i=0; i<options.all_local_files.length; i++ )
+        // {
+        //   data += "<div id=\"lvtemplate\" style=\" position:static; margin:auto; padding-top: 12px; padding-right: 13px; padding-bottom: 16px; padding-left: 15px; height:400px; width:160px; float:left; vertical-align:middle\">"+"\n"+"<center>"+"\n"+"<h2>"+"\n"+" hi, hello"+"\n"+"</h2>"+"\n"+"<a href=\""+localURL+options.all_local_files[i]+"\" >"+"\n"+"<img style=\"height : 200px; width : 200px; float:left\"src=\""+localURL+options.all_local_files[i]+"\" />"+"\n"+"</a>"+"\n"+"<h3>"+"\n"+"see you..."+"\n"+"</h3>"+"\n"+"</center>"+"\n"+"</div>";
+        // }
+        // var y=document.getElementById("listview");
+        // y.innerHTML = data;
+      }
+    };
+    // xobj.open("POST", "./ProjFiles/PHPServices/PHPCORSByPass.php", true);
+    xobj.open("GET", urls, true);
+    xobj.setRequestHeader("Content-type", "application/json");
+    // xobj.send(dbParam);
+    xobj.send();
+    */
+
+  var urls="";
+  var imageType = document.forms["singleURLForm"]["imageTypes"].value;
+  var x1 = document.forms["singleURLForm"][urlStartPartName].value;
+  x1 = "https://www.pexels.com/search/beauty/";
+  urls=x1;
+  var x6 = nullValueCheck(document.forms["singleURLForm"][urlEndPartName].value);
+
+  var xobj = new XMLHttpRequest();
+  var obj = { "webURL":urls };
+  dbParam = JSON.stringify(obj);
+  var xobj = new XMLHttpRequest();
   xobj.onreadystatechange = function ()
   {
     if (xobj.readyState == 4 && xobj.status == 200)
     {
-        // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-        //callback(xobj.responseText);
-        modelval.innerHTML = "";
-        var data = xobj.response;
-        console.log(data);
-        // var options = JSON.parse(data);// {"code" : "", "url" : ""},
-        // var optionsHTML="";
-        // for(i=0; i<options.length; i++ )
-        // {
-        //   optionsHTML = optionsHTML+"<option value="+options[i].url+">"+options[i].code+"</option>";
-        // }
-        // modelval.innerHTML = modelval.innerHTML+optionsHTML;
+        var responseData = xobj.response;
+        alert(responseData);
     }
-  };
-  // xobj.open('GET', urls, true);
-  // xobj.setRequestHeader('Access-Control-Allow-Headers', '*');
-  // xobj.setRequestHeader('Access-Control-Allow-Origin', '*');
-  // xobj.setRequestHeader('Content-Type', '*' );
-  // xobj.withCredentials = true;
-  // xobj.setRequestHeader( 'Content-Type', 'application/json' );
-  //xobj.open('GET', urls, true); // Replace 'my_data' with the path to your file
-
-  /*
-  // Website you wish to allow to connect
-  xobj.setHeader('Access-Control-Allow-Origin', '*');
-
-  // Request methods you wish to allow
-  xobj.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Request headers you wish to allow
-  xobj.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
-  */
-
-  //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-  xobj.send();
-
-  // for(var i= x2; i<=x3; i++)
-  // {
-  //     var changablePart = i;
-  //     if(x4 == "yes")
-  //     {
-  //         if(i<10)
-  //         {
-  //             changablePart = "0"+i;
-  //         }
-  //         // console.log(changablePart);
-  //     }
-  //     changablePartString = urls+changablePart+x5+x6+"."+imageType;
-  //     data += "<div id=\"lvtemplate\" style=\" position:static; margin:auto; padding-top: 12px; padding-right: 13px; padding-bottom: 16px; padding-left: 15px; height:400px; width:160px; float:left; vertical-align:middle\">"+"\n"+"<center>"+"\n"+"<h2>"+"\n"+" hi, hello"+"\n"+"</h2>"+"\n"+"<a href=\""+changablePartString+"\" >"+"\n"+"<img style=\"height : 200px; width : 200px; float:left\"src=\""+changablePartString+"\" />"+"\n"+"</a>"+"\n"+"<h3>"+"\n"+"see you..."+"\n"+"</h3>"+"\n"+"</center>"+"\n"+"</div>";
-  //     // console.log(changablePartString);
-  // }
-  // var y=document.getElementById("dataDisplayDiv");
-  // y.innerHTML = data;
+    };
+    xobj.open("POST", "./ProjFiles/PHPServices/PHPCORSByPass.php", true);
+    xobj.setRequestHeader("Content-type", "application/json");
+    xobj.send(dbParam);
 }
 
 function AccessXXYY10XXYYmodelData()
