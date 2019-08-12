@@ -85,6 +85,25 @@ function onAppStart()
     // onAppStartTwo();
  }
 
+ function TryRegex(strData, regexExp)
+{
+    
+    //var myRe = regexExp;///d(b+)d/g;
+    // var myArray = myRe.exec(strData);//('cdbbdbsbz');
+    var myArray = strData.match(regexExp);//('cdbbdbsbz');
+
+    /*
+    var str = "The rain in SPAIN stays mainly in the plain"; 
+    var res = str.match(/ain/gi);
+    */
+
+    var data = "";
+    for(var i = 0; i < myArray.length; i++)
+    {
+      data += myArray[i] + "\n" ;
+    }
+    alert(data);
+}
 
 function fetchJSONFile(path, callback) {
   var httpRequest = new XMLHttpRequest();

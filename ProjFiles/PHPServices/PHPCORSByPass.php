@@ -119,7 +119,7 @@ else
             $user_data = array();
             $response = array("message"=>"Songs cannot be retrived.".$e->getMessage(),
                              "code"=>"0",
-                              "UserDetails"=>""
+                              "URLDetails"=>""
                              );
             return $response;
             //echo "Connection failed: " . $e->getMessage();
