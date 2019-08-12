@@ -196,18 +196,34 @@ function GetSeperateTags(htmlData)
     var regexMatch = /([^\t\n\f \/>""'=]+)(?:=)('.*?'|"".*?"")(?:\s|\/>|\>)/gi;///d(b+)d/g
 
     var tagSet = new Set();
+    var data = "";
+    var y=document.getElementById("dataDisplayDiv");
+    // y.innerHTML = data;
     for(var i = 0; i < jsonStringData.data.length; i++)
     {
         var item = jsonStringData.data[i];
-        var attrs = GetLinksData(item.Name, regexMatch);
 
-        for(var j = 0; j < attrs.length; j++)
+        // var attrs = GetLinksData(item.Name, regexMatch);
+        // for(var j = 0; j < attrs.length; j++)
+        // {
+        //     var attr = attrs[j];
+        //     tagSet.add(attr);
+        // }
+
+        if(item.Name.includes("src"))
         {
-            var attr = attrs[j];
-            tagSet.add(attr);
+            var myArray = item.Name.match(regexMatch);
+            for(var i = 0; i < myArray.length; i++)
+            {
+                //   data += myArray[i] + "\n" ;
+                var keyVals = myArray[i].split('=');
+                var vals = keyVals[1].substring(1, (keyVals[1].length-2));
+                data += "<div id=\"lvtemplate\" style=\" position:static; margin:auto; padding-top: 12px; padding-right: 13px; padding-bottom: 16px; padding-left: 15px; height:400px; width:160px; float:left; vertical-align:middle\">"+"\n"+"<center>"+"\n"+"<h2>"+"\n"+" hi, hello"+"\n"+"</h2>"+"\n"+"<a href=\""+vals+"\" >"+"\n"+"<img style=\"height : 200px; width : 200px; float:left\"src=\""+vals+"\" />"+"\n"+"</a>"+"\n"+"<h3>"+"\n"+"see you..."+"\n"+"</h3>"+"\n"+"</center>"+"\n"+"</div>";
+                // y.innerHTML += "<div id=\"lvtemplate\" style=\" position:static; margin:auto; padding-top: 12px; padding-right: 13px; padding-bottom: 16px; padding-left: 15px; height:400px; width:160px; float:left; vertical-align:middle\">"+"\n"+"<center>"+"\n"+"<h2>"+"\n"+" hi, hello"+"\n"+"</h2>"+"\n"+"<a href=\""+vals+"\" >"+"\n"+"<img style=\"height : 200px; width : 200px; float:left\"src=\""+vals+"\" />"+"\n"+"</a>"+"\n"+"<h3>"+"\n"+"see you..."+"\n"+"</h3>"+"\n"+"</center>"+"\n"+"</div>";
+            }
         }
-        
     }
+    y.innerHTML = data;
 }
 
 function AccessDynamicURLData()
