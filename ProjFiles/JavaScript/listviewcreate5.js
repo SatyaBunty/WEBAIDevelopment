@@ -189,7 +189,7 @@ function GetSeperateTags(htmlData)
     }
     listConversionString = listConversionString.slice(0, listConversionString.length - 1);
     listConversionString += "]}";
-    console.log(listConversionString);
+    //console.log(listConversionString);
 
     var jsonStringData = JSON.parse(listConversionString);
     
@@ -213,7 +213,7 @@ function GetSeperateTags(htmlData)
 function AccessDynamicURLData()
 {
   var imageType = document.forms["singleURLForm"]["imageTypes"].value;
-  var mainURL = "https://www.pexels.com/search/beauty/";//document.forms["singleURLForm"][urlStartPartName].value;
+  var mainURL = document.forms["singleURLForm"][urlStartPartName].value;//"https://www.pexels.com/search/beauty/";
   var proxyURLJS = "https://cors-anywhere.herokuapp.com/";
   var proxyURLPHP = "./ProjFiles/PHPServices/PHPCORSByPass.php";
   var x6 = nullValueCheck(document.forms["singleURLForm"][urlEndPartName].value);
