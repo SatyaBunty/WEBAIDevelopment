@@ -63,6 +63,7 @@ function UpdateForm()
         GetLinksData(stringCheck, regexMatch);
       formData.setAttribute('name',"singleURLForm");
       formData.setAttribute('onsubmit',"AccessDynamicURLData(); return false;");
+      // formData.setAttribute('onsubmit',"AccessDynamicURLDataFrame(); return false;");
     }
     else if(selectedOption === "XX/YY/10XXYY model")
     {
@@ -234,8 +235,18 @@ function AccessDynamicURLData()
   var proxyURLPHP = "./ProjFiles/PHPServices/PHPCORSByPass.php";
   var x6 = nullValueCheck(document.forms["singleURLForm"][urlEndPartName].value);
   
-  AccessDynamicURL(mainURL, proxyURLJS, "GET", "JS");
+  AccessDynamicURLDataFrame(mainURL);
+  //AccessDynamicURL(mainURL, proxyURLJS, "GET", "JS");
   //AccessDynamicURLData(mainURL, proxyURLPHP, "POST", "PHP");
+}
+
+function AccessDynamicURLDataFrame(mainURL)
+{
+  var webFrame = "<iframe id=\"dataDisplayFrame\" src=\"" + mainURL + "\" style=\" margin:auto; height: 400px; width : 100%; padding: 0;\"></iframe>";
+  // var y=document.getElementById("dataDisplayFrame");
+  // y.src = mainURL;
+  var y=document.getElementById("dataDisplayDiv");
+  y.innerHTML = webFrame;
 }
 
 function AccessDynamicURL(dataUrl, proxyURL, methodName, fromName)
@@ -263,6 +274,7 @@ function AccessDynamicURL(dataUrl, proxyURL, methodName, fromName)
         {
             data += responseData
         }
+        console.log(data);
         var datas = GetSeperateTags(data);
     }
     };
